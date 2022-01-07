@@ -1,6 +1,7 @@
 import app from "./firebase";
 
 import { getDatabase, ref, push, set } from "firebase/database";
+import { useEffect, useState } from "react";
 
 export const addInfo = (info) => {
   const db = getDatabase();
@@ -12,4 +13,12 @@ export const addInfo = (info) => {
     gender: info.gender,
   });
 };
-console.log("veri ekledni");
+
+export const useFetch = () => {
+  const [isLoading, setIsLoading] = useState();
+
+  useEffect(() => {
+    setIsLoading(true);
+  }, []);
+  return { isLoading };
+};
