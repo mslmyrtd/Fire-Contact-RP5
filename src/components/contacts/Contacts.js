@@ -1,5 +1,5 @@
 import { Table, Icon } from "semantic-ui-react";
-import { useFetch } from "../../utils/functions";
+import { useFetch, deleteInfo } from "../../utils/functions";
 const Contacts = () => {
   const { contactList, isLoading } = useFetch();
   return (
@@ -31,15 +31,13 @@ const Contacts = () => {
           ) : (
             contactList?.map((item, index) => (
               <Table.Row key={index}>
-                <Table.Cell textAlign="center">
-                  {item.username.toUpperCase()}
-                </Table.Cell>
+                <Table.Cell textAlign="center">{item.username}</Table.Cell>
                 <Table.Cell textAlign="center">{item.phoneNumber}</Table.Cell>
                 <Table.Cell textAlign="center">{item.gender}</Table.Cell>
                 <Table.Cell
                   textAlign="center"
                   className="delete"
-                  onClick={null}
+                  onClick={() => deleteInfo(item.id)}
                 >
                   <Icon name="delete" />
                 </Table.Cell>

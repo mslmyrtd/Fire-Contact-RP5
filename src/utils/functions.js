@@ -1,6 +1,15 @@
 import app from "./firebase";
 
-import { getDatabase, ref, push, set, onValue, query } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  push,
+  set,
+  onValue,
+  query,
+  remove,
+  child,
+} from "firebase/database";
 import { useEffect, useState } from "react";
 
 export const addInfo = (info) => {
@@ -29,7 +38,22 @@ export const useFetch = () => {
         contactArray.push({ id, ...contacts[id] });
       }
       setContactList(contactArray);
+      setIsLoading(false);
     });
   }, []);
   return { isLoading, contactList };
+};
+
+export const deleteInfo = (id) => {
+  const db = getDatabase();
+  // const userRef = ref(db, "contact");
+  remove(ref(db, "contact/" + id));
+};
+
+export const update = (info) => {
+  const db = getDatabase();
+  const newUserKey = push(child(ref(db), "contact/")).key;
+  const updates = {};
+  updates["/contact/" + newUserKey] = info;
+  return update(ref(db), updates);
 };
