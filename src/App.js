@@ -5,10 +5,17 @@ import { useState } from "react";
 
 const initialValues = { userName: "", phoneNumber: "", gender: "NO INFO" };
 function App() {
+  const handleFormSubmit = () => {
+    console.log(info);
+  };
   const [info, setInfo] = useState(initialValues);
   return (
     <div className="App">
-      <FormComponent info={info} setInfo={setInfo} />
+      <FormComponent
+        info={info}
+        setInfo={setInfo}
+        handleFormSubmit={handleFormSubmit}
+      />
       <Contacts />
     </div>
   );
