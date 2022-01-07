@@ -1,25 +1,25 @@
-import React from 'react'
-import { Grid,Form,Segment,Button} from 'semantic-ui-react';
-
-const FormComponent = () => {
-    return (
-        <Grid textAlign="center" verticalAlign="middle">
-         <Grid.Column style={{ width: 300 }}>
-            <div className="ui piled segments">
-            <div className="ui segment brand">
-                <a
-                href="https://github.com/clarusway"
-                className="design"
-                target="_blank"
-                rel="noopener noreferrer"
-                >
-                <code>{'<Clarusway/> '}</code>
-                </a>
-                <span className="design header">design</span>
-            </div>
-            </div>
-            <h2 className="contact-header">Add Contact</h2>
-            <Form size="large" >
+import React from "react";
+import { Grid, Form, Segment, Button } from "semantic-ui-react";
+import { options } from "../../utils/constants";
+const FormComponent = ({ setInfo, info }) => {
+  return (
+    <Grid textAlign="center" verticalAlign="middle">
+      <Grid.Column style={{ width: 300 }}>
+        <div className="ui piled segments">
+          <div className="ui segment brand">
+            <a
+              href="https://github.com/clarusway"
+              className="design"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <code>{"<Clarusway/> "}</code>
+            </a>
+            <span className="design header">design</span>
+          </div>
+        </div>
+        <h2 className="contact-header">Add Contact</h2>
+        <Form size="large">
           <Segment stacked>
             <Form.Input
               fluid
@@ -27,7 +27,7 @@ const FormComponent = () => {
               icon="user"
               iconPosition="left"
               placeholder="Name"
-              value={null}
+              value={info.userName}
               onChange={null}
               required
             />
@@ -37,18 +37,18 @@ const FormComponent = () => {
               icon="phone"
               iconPosition="left"
               placeholder="Phone Number"
-              value={null}
+              value={info.phoneNumber}
               onChange={null}
               required
             />
             <Form.Dropdown
-              options={null}
+              options={options}
               onChange={null}
               placeholder="Gender"
               name="gender"
               fluid
               selection
-              value={null}
+              value={info.gender.toUpperCase()}
               required
             />
             <Button color="teal" fluid size="large">
@@ -56,9 +56,9 @@ const FormComponent = () => {
             </Button>
           </Segment>
         </Form>
-      </Grid.Column> 
-      </Grid>
-    )
-}
+      </Grid.Column>
+    </Grid>
+  );
+};
 
-export default FormComponent
+export default FormComponent;
