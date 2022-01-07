@@ -1,4 +1,4 @@
-import firebase from "./firebase";
+import app from "./firebase";
 
 import { getDatabase, ref, push, set } from "firebase/database";
 
@@ -12,3 +12,4 @@ export const addInfo = (info) => {
     gender: info.gender,
   });
 };
+console.log("veri ekledni");
